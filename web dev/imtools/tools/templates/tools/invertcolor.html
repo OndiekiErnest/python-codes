@@ -1,0 +1,15 @@
+{% extends 'tools/base.html' %}
+
+{% block title %}
+imtools Invert Color
+{% endblock title %}
+
+{% block content %}
+<h2>Let black be white, and vice versa!</h2>
+<form method="post">
+	{% csrf_token %}
+	<input type="file" name="images" accept="image/*" multiple required>
+	<p></p>
+	<button type="submit", name="submit">Invert Color</button>
+</form>
+{% endblock content %}

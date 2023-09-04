@@ -1,0 +1,15 @@
+{% extends 'tools/base.html' %}
+
+{% block title %}
+imtools Thumbnail
+{% endblock title %}
+
+{% block content %}
+<h2>Create thumbnail!</h2>
+<form method="post">
+	{% csrf_token %}
+	<input type="file" name="images" accept="image/*" multiple required>
+	<p></p>
+	<button type="submit", name="submit">Create Thumbnail</button>
+</form>
+{% endblock content %}

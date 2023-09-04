@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Query results
+{% endblock title %}
+
+{% block content %}
+	<h1>{{ls.name}}</h1>
+	<form method="post">
+		{% csrf_token %}
+		{% for item in ls.item_set.all %}
+		<div class="input-group mb-3">
+			{% if item.complete %}
+				<li class="list-group-item">
+				    <input class="form-check-input me-1" type="checkbox" value="clicked" name="c{{ item.id }}", checked>
+				    	<input type="text", value="{{ item.text }}">
+				</li>
+			{% else %}
+				<li class="list-group-item">
+				    <input class="form-check-input me-1" type="checkbox" value="clicked" name="c{{ item.id }}">
+				    	<input type="text", value="{{ item.text }}">
+				</li>
+			{% endif %}
+		</div>
+		{% endfor %}
+
+		<div class="input-group mb-3">
+			<button type="submit", name="newItem", value="newItem", class="btn btn-success btn-primary">Add Item</button>
+			<input type="text" name="new">
+		<button type="submit", name="save", value="save", class="btn btn-success">Save</button>
+	</form>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'tools/base.html' %}
+
+{% block title %}
+imtools Thumbnail
+{% endblock title %}
+
+{% block content %}
+<h2>Available Images</h2>
+	<div class="container">
+		<div class="row imagetiles">
+			{% for image in images %}
+			  	<div class="col-lg-4 mb-4 mb-lg-0">
+			    	<a href="{% url 'download' image.id %}">
+			    		<img src="{{ image.image.url }}"
+			    		class="w-100 shadow-1-strong rounded mb-4 img-responsive"
+			    		alt="{{ image.description }}"
+			    		/>
+			    	</a>
+			    </div>
+			{% empty %}
+			  <h4>No images found.</h4>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock content %}
